@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: auth-service
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+    initialization-mode: always
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    showSql: true
+
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+
+  output:
+    ansi:
+      enabled: always
+
+  data.web.pageable:
+    default-page-size: 20         # Default page size.
+    max-page-size: 200           # Maximum page size to be accepted.
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.type.descriptor.sql.BasicExtractor: ERROR
+    org.springframework.web.client: ERROR
+    org.springframework.web.HttpLogging: ERROR
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
