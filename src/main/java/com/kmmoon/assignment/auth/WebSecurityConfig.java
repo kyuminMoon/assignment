@@ -21,6 +21,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
 
         web.ignoring().antMatchers("/v2/api-docs")
+                .antMatchers("/v3/api-docs")
+                .antMatchers("/v3/api-docs/swagger-config")
                 .antMatchers("/swagger-resources/**")
                 .antMatchers("/swagger-ui.html")
                 .antMatchers("/configuration/**")
