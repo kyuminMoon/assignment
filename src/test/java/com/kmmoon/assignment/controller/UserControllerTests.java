@@ -74,7 +74,7 @@ public class UserControllerTests {
 	@DisplayName("유저 리스트 검색")
 	public void getUserList() throws Exception{
 		mockMvc.perform(
-					get("/user/list").header("Authorization", token)
+					get("/users/list").header("Authorization", token)
 				)
 				.andDo(print())
 				.andExpect(status().isOk())
@@ -84,7 +84,7 @@ public class UserControllerTests {
 	@Test
 	@DisplayName("유저 좋아요 리스트")
 	public void getUserLikeList() throws Exception{
-		mockMvc.perform(get("/user/" + user.getId() + "/like")
+		mockMvc.perform(get("/users/" + user.getId() + "/likes")
 						.header("Authorization", token))
 				.andDo(print())
 				.andExpect(status().isOk())

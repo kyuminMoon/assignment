@@ -71,7 +71,7 @@ public class PostControllerTests {
     @DisplayName("게시글 리스트 검색")
     public void getPostList() throws Exception{
         mockMvc.perform(
-                        get("/post/list").header("Authorization", token)
+                        get("/posts/list").header("Authorization", token)
                                 .queryParam("cursorId","2")
                                 .queryParam("size", "10")
                 )
@@ -83,7 +83,7 @@ public class PostControllerTests {
     @Test
     @DisplayName("게시글 상세조회")
     public void getPost() throws Exception{
-        mockMvc.perform(get("/post/1")
+        mockMvc.perform(get("/posts/1")
                         .header("Authorization", token))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -102,7 +102,7 @@ public class PostControllerTests {
 
         String requestJson = ow.writeValueAsString(postDTO);
 
-        mockMvc.perform(post("/post")
+        mockMvc.perform(post("/posts")
                         .header("Authorization", token)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -117,7 +117,7 @@ public class PostControllerTests {
     @Test
     @DisplayName("게시글 삭제")
     public void deletePost() throws Exception{
-        mockMvc.perform(delete("/post/1")
+        mockMvc.perform(delete("/posts/1")
                         .header("Authorization", token)
                 )
                 .andDo(print())
@@ -136,7 +136,7 @@ public class PostControllerTests {
 
         String requestJson = ow.writeValueAsString(postDTO);
 
-        mockMvc.perform(put("/post/1")
+        mockMvc.perform(put("/posts/1")
                         .header("Authorization", token)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -149,7 +149,7 @@ public class PostControllerTests {
     @Test
     @DisplayName("게시글 좋아요")
     public void likePost() throws Exception{
-        mockMvc.perform(post("/post/2/like")
+        mockMvc.perform(post("/posts/2/like")
                         .header("Authorization", token)
                 )
                 .andDo(print())
